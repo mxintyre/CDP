@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>I CONTAIN MULTITUDES.</title>
+    <style>
+        body {
+            font-family: Courier, monospace;
+            text-align: center;
+            margin-top: 300px;
+        }
+        #sentence {
+            margin-top: 20px;
+            font-size: 15px;
+        }
+        #userImage {
+            margin-top: 20px;
+            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <h1>I CONTAIN MULTITUDES.</h1>
+    <button onclick="generateSentence()">Generate New Person</button>
+    <div id="sentence"></div>
+    <img id="userImage" src="" alt="AI Generated Person" />
+
+    <script>
+        const adjectives = [
+            "ambitious", "friendly", "analytical", "arrogant", "assertive",
+            "blunt", "captivating", "charming", "compassionate", "critical",
+            "determined", "eccentric", "empathetic", "generous", "introverted",
+            "kind-hearted", "level-headed", "manipulative", "obnoxious", "moody",
+            "nurturing", "open-minded", "extroverted", "impulsive", "inquisitive",
+            "irresponsible", "sociable", "spontaneous", "thoughtful", "witty",
+            "sarcastic", "optimistic", "pessimistic", "observant", "passionate",
+            "creative", "confident", "brave", "detached", "depressed",
+            "weird", "loyal", "rebellious", "selfless", "skeptical",
+            "independent", "affectionate", "joyful", "gullible", "hopeful",
+            "naive", "quirky", "wholesome", "playful", "artistic",
+            "curious", "mischievous", "resilient", "imaginative", "balanced"
+        ];
+
+        const nouns = [
+            "kindergarten teacher", "adventurer", "artist", "biologist", "chef",
+            "detective", "engineer", "farmer", "gardener", "history buff",
+            "illustrator", "journalist", "lawyer", "musician", "nurse",
+            "photographer", "pilot", "poet", "programmer", "scientist",
+            "teacher", "veterinarian", "creative writer", "architect", "activist",
+            "researcher", "designer", "fitness enthusiast", "poetry lover", "animal advocate",
+            "community volunteer", "tech geek", "environmentalist", "social media influencer", "puzzle solver",
+            "therapist", "parent", "DIY maker", "grandparent", "comedy enthusiast",
+            "barista", "gamer", "indie band groupie", "fantasy football guru", "origami artist",
+            "roller derby racer", "amateur magician", "sneakerhead", "cinephile", "foodie",
+            "car guy", "cosplayer", "yogi", "cyclist", "hiker",
+            "vinyl record collector", "tea connoisseur", "vintage fashionista", "balloon sculptor", "birdwatcher"
+        ];
+
+        const verbs = [
+            "walks their dog but doesn't pick up the poop", "chews with their mouth open", "is always on their phone",
+            "ghosts people on dating apps", "forgot their mom's birthday", "often interrupts in conversation",
+            "never takes accountability for their actions", "cheated on their long-distance partner", "lacks self-control",
+            "overthinks everything", "jumps from relationship to relationship", "gives too much in relationships",
+            "struggles to express their emotions", "creates problems where there are none", "hates the way their body looks",
+            "cries easily", "turns to alcohol for stress relief", "doesn't remember the last time they got a hug",
+            "fears ending up alone", "has difficulty getting out of bed most days", "is terrified of being judged by others",
+            "embraces independence to the point of isolation", "always puts others' needs first, even when they shouldn't",
+            "finds it hard to say 'no' and draw boundaries", "clings to their partner and friends, scared they will leave",
+            "avoids conflict and ends relationships to avoid closeness", "believes showing emotions is showing weakness",
+            "seeks constant reassurance", "feels angry and aggressive inside", "sends handwritten letters to friends and family",
+            "loves stargazing and wonders at the vastness of the universe", "cooks for a friend going through hard times",
+            "volunteers to mentor kids in their community", "creates a small garden to nurture plants and connect with nature",
+            "leaves positive, anonymous notes in public places for strangers to find", "offers to babysit for a neighbor, giving them a much-needed break",
+            "keeps a gratitude journal, sharing one thing they're thankful for each day", "bakes extra cookies to share with coworkers",
+            "writes music in their spare time", "builds a small free library in their neighborhood to encourage reading",
+            "always makes DIY gifts for friends' birthdays", "really listens", "forgives themselves for the past",
+            "goes all out to celebrate every holiday", "creates art for the sake of creating", "is always open to new experiences",
+            "admits when they are wrong easily", "means everything they say", "finds clarity through exercise",
+            "seeks learning experiences every day", "runs marathons to practice perseverance", "sends their friends wholesome memes",
+            "collects all the letters they've ever been given", "organizes clothing swaps for sustainability and community bonding",
+            "embraces their imperfections", "finds joy in their morning coffee", "compliments strangers genuinely",
+            "goes to therapy regularly", "gets out of their comfort zone by doing improv comedy", "is strong and resilient, no matter what"
+        ];
+
+        function getRandomElement(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function generateSentence() {
+            const adjective = getRandomElement(adjectives);
+            const noun = getRandomElement(nouns);
+            const verb = getRandomElement(verbs);
+            const sentence = `A ${adjective} ${noun} who ${verb}.`;
+            document.getElementById("sentence").innerText = sentence;
+        }
+        function fetchRandomUserImage() {
+            // Directly set the source to the "This Person Does Not Exist" URL
+            return 'https://thispersondoesnotexist.com/image';
+        }
+
+        function generateContent() {
+            generateSentence();
+            const imageUrl = fetchRandomUserImage();
+            document.getElementById('userImage').src = imageUrl + '?random=' + Math.random();
+            // Adding a random query string to ensure the image changes with each request
+        }
+    </script>
+</body>
+</html>
