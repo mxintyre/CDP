@@ -11,21 +11,13 @@
         #sentence {
             margin-top: 20px;
             font-size: 15px;
-        }
-        #userImage {
-            margin-top: 20px;
-            border-radius: 10px;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-        }        
+        }      
     </style>
 </head>
 <body>
     <h1>I CONTAIN MULTITUDES.</h1>
     <button onclick="generateSentence()">Generate New Person</button>
     <div id="sentence"></div>
-    <img id="userImage" src="" alt="Random Face" />
 
     <script>
         const adjectives = [
@@ -94,17 +86,6 @@
             const verb = getRandomElement(verbs);
             const sentence = `A ${adjective} ${noun} who ${verb}.`;
             document.getElementById("sentence").innerText = sentence;
-        }
-        function fetchRandomUserImage() {
-            // Update the source to the new provided URL
-            return 'https://100k-faces.glitch.me/random-image';
-        }
-
-        function generateContent() {
-            generateSentence();
-            const imageUrl = fetchRandomUserImage();
-            document.getElementById('userImage').src = imageUrl + '?random=' + Math.random();
-            // Adding a random query string to ensure the image changes with each request
         }
     </script>
 </body>
